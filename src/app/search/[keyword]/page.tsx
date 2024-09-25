@@ -1,6 +1,13 @@
 import React from 'react'
 
-const Page = () => {
+type Params = {
+  params: {
+    keyword: string
+  }
+}
+
+const Page = ({ params }: Params) => {
+  console.log(params)
   return (
     <>
         <h1>Search Page</h1>
