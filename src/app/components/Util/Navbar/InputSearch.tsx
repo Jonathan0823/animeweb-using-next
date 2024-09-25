@@ -10,6 +10,7 @@ const InputSearch = () => {
         if (event.key === "Enter") {
             event.preventDefault();
             router.push(`/search/${searchRef.current!.value}`);
+            searchRef.current!.value = "";
         }
     }
     
