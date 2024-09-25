@@ -17,7 +17,7 @@ const Home = async () => {
 
   return (
     <>
-      <div>Paling Populer</div>
+      <div className="text-2xl font-bold m-5">Paling Populer</div>
       <div className="grid md:grid-cols-4 sm:grid-cols-3  grid-cols-2 gap-4">
         {data.data.map((item: Anime) => (
           <div key={item.mal_id} className="shadow-xl">
