@@ -23,7 +23,7 @@ const InputSearch = () => {
       <input
         type="text"
         placeholder="Search Anime"
-        className="p-2 rounded-md md:w-80 sm:w-full w-full md:mt-0 sm:mt-3 mt-3 "
+        className="p-2 rounded-md md:w-80 sm:w-full w-full md:mt-0 sm:mt-3 mt-3 text-black "
         ref={searchRef} onKeyDown={handleEnter}
       />
       <button className="absolute md:right-6 md:top-5 sm:right-14 sm:top-16 right-11 top-16" onClick={handleSearch}>
