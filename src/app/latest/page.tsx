@@ -5,7 +5,7 @@ import Pagination from "../components/Util/Pagination";
 import AnimeList from "../components/AnimeList";
 
 
-interface TopAnimeData {
+interface LatestAnimeData {
   data: Anime[];
   pagination: {
     last_visible_page: number;
@@ -21,11 +21,11 @@ type Anime = {
     };
   };
 };
-const TopAnime = () => {
+const LatestAnime = () => {
   
 
   const [page, setPage] = useState(1);
-  const [data, setData] = useState<TopAnimeData>({
+  const [data, setData] = useState<LatestAnimeData>({
     pagination: {
       last_visible_page: 0,
     },
@@ -36,7 +36,7 @@ const TopAnime = () => {
   useEffect(() => {
     const fetchAnime = async () => {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?sfw=true&limit=20&page=${page}`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/seasons/now?sfw=true&limit=20&page=${page}`
       );
       const data = await res.json();
       setData(data);
@@ -47,11 +47,11 @@ const TopAnime = () => {
 
   return (
     <>
-      <HeaderMenu title={`Top Anime🔥 #${page}`} />
+      <HeaderMenu title={`Latest Anime ⭐ #${page}`} />
       <AnimeList api={data} />
       <Pagination page={page} lastpage={data.pagination.last_visible_page} setPage={setPage}/>
     </>
   );
 };
 
-export default TopAnime;
+export default LatestAnime;

@@ -15,12 +15,12 @@ const Home = async () => {
   return (
     <>
       <section>
-        <Header title="Top Anime" linktitle="More" linkref="/topanime" />
+        <Header title="Top Anime" linktitle="See All" linkref="/topanime" />
         <AnimeList api={topAnime} />
       </section>
 
       <section>
-        <Header title="Latest Anime" linktitle="More" linkref="/latest" />
+        <Header title="Latest Anime" linktitle="See All" linkref="/latest" />
         <AnimeList api={latestAnime} />
       </section>
     </>
