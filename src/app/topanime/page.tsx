@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import HeaderMenu from "../components/Util/HeaderMenu";
 import Pagination from "../components/Util/Pagination";
 import AnimeList from "../components/AnimeList";
+import getAnimeResponse from "../libs/api";
 
 
 interface TopAnimeData {
@@ -35,10 +36,7 @@ const TopAnime = () => {
 
   useEffect(() => {
     const fetchAnime = async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?sfw=true&limit=20&page=${page}`
-      );
-      const data = await res.json();
+      const data = await getAnimeResponse("top/anime", `sfw=true&limit=20&page=${page}`);
       setData(data);
     };
 

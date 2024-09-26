@@ -1,5 +1,6 @@
 import React from "react";
 import AnimeList from "@/app/components/AnimeList";
+import getAnimeResponse from "@/app/libs/api";
 
 type Params = {
   params: {
@@ -8,10 +9,7 @@ type Params = {
 };
 
 const Page = async ({ params }: Params) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${params.keyword}`
-  );
-  const data = await res.json();
+  const data = await getAnimeResponse("anime", `q=${params.keyword}`);
   const decodedKeyword = decodeURI(params.keyword);
   return (
     <>

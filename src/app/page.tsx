@@ -1,16 +1,11 @@
 import React from "react";
 import AnimeList from "./components/AnimeList";
 import Header from "./components/AnimeList/Header";
+import getAnimeResponse from "./libs/api";
 
 const Home = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=8`
-  );
-  const res2 = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/seasons/now?limit=8`
-  );
-  const topAnime = await res.json();
-  const latestAnime = await res2.json();
+  const topAnime =  await getAnimeResponse("top/anime", "limit=8");
+  const latestAnime =  await getAnimeResponse("seasons/now", "limit=8");
 
   return (
     <>
