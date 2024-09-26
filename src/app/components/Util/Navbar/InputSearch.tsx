@@ -7,7 +7,7 @@ const InputSearch = () => {
   const router = useRouter();
 
   const handleEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (searchRef.current!.value === "") {
+    if (searchRef.current!.value === "" || searchRef.current!.value.trim() === "") {
       return;
     }
     if (event.key === "Enter") {
@@ -18,7 +18,7 @@ const InputSearch = () => {
   };
 
   const handleSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (searchRef.current!.value === "") {
+    if (searchRef.current!.value === "" || searchRef.current!.value.trim() === "") {
       return;
     }
     event.preventDefault();

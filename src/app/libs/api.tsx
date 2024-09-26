@@ -9,3 +9,22 @@ const getAnimeResponse = async ( resource: string, query: string ) => {
 }
 
 export default getAnimeResponse
+
+interface ApiResponse {
+    [key: string]: unknown;
+    data: {
+        mal_id: number
+        title: string
+        images: {
+            jpg: {
+                image_url: string
+            }
+        }
+    }[]
+}
+
+export const getNestedAnimeResponse = async ( resource: string, object: string) => {
+    const res = await getAnimeResponse( resource, "" )
+
+    return res.data.flatMap((item: ApiResponse) => item[object])
+}

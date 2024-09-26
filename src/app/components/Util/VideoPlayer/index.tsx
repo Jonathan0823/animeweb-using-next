@@ -9,11 +9,12 @@ const VideoPlayer = ({ id }: { id: string }) => {
   const handleClose = () => setOpen((prev) => !prev);
 
   const opts = {
-    height: "171",
-    width: "304",
+    height: "189",
+    width: "336",
     playerVars: {
       autoplay: 1,
     },
+    
   };
   return (
     <div className="fixed bottom-0 right-2">
