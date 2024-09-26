@@ -35,7 +35,7 @@ const InputSearch = () => {
         onKeyDown={handleEnter}
       />
       <button
-        className="absolute md:right-6 md:top-5 sm:right-14 sm:top-16 right-11 top-16"
+        className="absolute md:right-24 md:top-5 sm:right-14 sm:top-16 right-11 top-16"
         onClick={handleSearch}
       >
         <svg
