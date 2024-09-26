@@ -2,6 +2,7 @@ import React from "react";
 import getAnimeResponse from "@/app/libs/api";
 import Image from "next/image";
 import styles from "./Detail.module.css";
+import VideoPlayer from "@/app/components/Util/VideoPlayer";
 
 type Params = {
   params: {
@@ -31,10 +32,32 @@ const Page = async ({ params }: Params) => {
           />
         </div>
         <div>
+          <div className="md:ml-5 mx-4 md:mt-0 mt-10 flex flex-row gap-2 overflow-x-auto">
+            <div className="w-36 flex flex-col justify-center items-center rounded border border-white">
+              <p>Rank</p>
+              <p>{data.data.rank}</p>
+            </div>
+            <div className="w-36 flex flex-col justify-center items-center rounded border border-white">
+              <p>Score</p>
+              <p>{data.data.score}</p>
+            </div>
+            <div className="w-36 flex flex-col justify-center items-center rounded border border-white">
+              <p>Type</p>
+              <p>{data.data.type}</p>
+            </div>
+            <div className="w-36 flex flex-col justify-center items-center rounded border border-white">
+              <p>Source</p>
+              <p>{data.data.source}</p>
+            </div>
+          </div>
+          <div className="mt-10">
           <p className="text-lg font-bold m-5 mt-2">Sypnosis</p>
-          <p className="text-lg font-bold m-5 mt-2 flex justify-between">
+          <p className="text-lg m-5 mt-2 flex justify-between text-justify">
             {data.data.synopsis}
           </p>
+          <VideoPlayer id={data.data.trailer.youtube_id} />
+            
+          </div>
         </div>
       </div>
     </>
