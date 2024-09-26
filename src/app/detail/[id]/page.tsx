@@ -12,7 +12,6 @@ type Params = {
 
 const Page = async ({ params }: Params) => {
   const data = await getAnimeResponse(`anime/${params.id}`, ``);
-  console.log(data.data);
   return (
     <>
       <div className="text-2xl font-bold md:ml-5 ml-4 mb-2 mt-8 flex justify-between">
@@ -21,7 +20,7 @@ const Page = async ({ params }: Params) => {
       <div className="text-lg font-bold m-5 mt-2 flex justify-between">
         {data.data.title_japanese}
       </div>
-      <div className="flex md:flex-row flex-col justify-between max-w-full">
+      <div className="flex md:flex-row flex-col justify-between max-w-full mb-24">
         <div className="md:m-0">
           <Image
             src={data.data.images.jpg.image_url}
@@ -40,6 +39,10 @@ const Page = async ({ params }: Params) => {
             <div className="w-36 flex flex-col justify-center items-center rounded border border-white">
               <p>Score</p>
               <p>{data.data.score}</p>
+            </div>
+            <div className="w-36 flex flex-col justify-center items-center rounded border border-white">
+              <p>Popularity</p>
+              <p>{data.data.popularity}</p>
             </div>
             <div className="w-36 flex flex-col justify-center items-center rounded border border-white">
               <p>Type</p>
