@@ -18,7 +18,7 @@ type Anime = {
   title: string;
   images: {
     jpg: {
-      image_url: string;
+      large_image_url: string;
     };
   };
 };
