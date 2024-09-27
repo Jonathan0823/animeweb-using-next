@@ -12,7 +12,7 @@ const UserActionButton = async () => {
       {session ? (
         <Link href="/api/auth/signout" className="md:text-xl ">
           <div className="w-10 h-10">
-            <Image src={session?.image || ""} width={40} height={40} alt="profile picture" className="rounded-full"/>
+            <Image src={session?.image || ""} width={40} height={40} alt="profile picture" className="rounded-full "/>
           </div>
         </Link>
       ) : (
