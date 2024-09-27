@@ -1,0 +1,20 @@
+.dropdown{
+    margin: 0;
+    position: absolute;
+    width: 200px;
+    padding: 15px;
+    left: -8.40rem;
+    border-radius: 15px;
+    border: 1px solid rgb(27, 91, 211);
+}
+
+.dropdown::before{
+    position: absolute;
+    content: "";
+    top: -0.25rem;
+    right: 2rem;
+    width: 25px;
+    height: 25px;
+    transform: rotate(45deg);
+    background-color: rgb(59, 130, 246);
+}

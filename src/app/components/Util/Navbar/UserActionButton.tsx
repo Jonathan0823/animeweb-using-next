@@ -1,26 +1,35 @@
+
 import React from "react";
-import Link from "next/link";
 import { authUserSesion } from "@/app/libs/auth-libs";
 import Image from "next/image";
-import ProfilePic from "@/assets/images/person.png"
+import ProfilePic from "@/assets/images/person.png";
+import ProfilePicture from "./ProfilePicture";
+import Link from "next/link";
 
 const UserActionButton = async () => {
   const session = await authUserSesion();
+  const profilepic = session?.image;
+  
 
   return (
     <div>
       {session ? (
-        <Link href="/api/auth/signout" className="md:text-xl ">
-          <div className="w-10 h-10">
-            <Image src={session?.image || ""} width={40} height={40} alt="profile picture" className="rounded-full "/>
-          </div>
-        </Link>
+        <>
+        
+        <ProfilePicture image = {profilepic || ""} />
+
+        </>
       ) : (
-        <Link href="/api/auth/signin" className="md:text-xl ">
           <div className="w-10 h-10">
-          <Image src={ProfilePic} width={40} height={40} alt="profile picture"/>
+            <Link href="/api/auth/signin">
+            <Image
+              src={ProfilePic}
+              width={40}
+              height={40}
+              alt="profile picture"
+            />
+            </Link>
           </div>
-        </Link>
       )}
     </div>
   );
