@@ -3,6 +3,8 @@ import getAnimeResponse from "@/app/libs/api";
 import Image from "next/image";
 import styles from "./Detail.module.css";
 import VideoPlayer from "@/app/components/Util/VideoPlayer";
+import CollectionButton from "@/app/components/AnimeList/CollectionButton";
+import { authUserSesion } from "@/app/libs/auth-libs";
 
 type Params = {
   params: {
@@ -12,10 +14,13 @@ type Params = {
 
 const Page = async ({ params }: Params) => {
   const data = await getAnimeResponse(`anime/${params.id}`, ``);
+  const user = await authUserSesion();
+
   return (
     <>
       <div className="text-2xl font-bold md:ml-5 ml-4 mb-2 mt-8 flex justify-between">
         {data.data.title}
+        <CollectionButton mal_id={data.data.mal_id} user_email={user?.email || ""} />
       </div>
       <div className="text-lg font-bold m-5 mt-2 flex justify-between">
         {data.data.title_japanese}

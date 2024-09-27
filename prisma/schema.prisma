@@ -15,7 +15,7 @@ datasource db {
 
 model Collection{
   id            Int @id @default(autoincrement())
-  mal_id        String
+  mal_id        Int
   user_email    String
 
   @@unique([user_email, mal_id])
