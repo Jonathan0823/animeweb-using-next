@@ -12,3 +12,11 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Collection{
+  id            Int @id @default(autoincrement())
+  mal_id        String
+  user_email    String
+
+  @@unique([user_email, mal_id])
+}
