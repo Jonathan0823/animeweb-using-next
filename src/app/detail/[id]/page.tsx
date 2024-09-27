@@ -5,6 +5,7 @@ import styles from "./Detail.module.css";
 import VideoPlayer from "@/app/components/Util/VideoPlayer";
 import CollectionButton from "@/app/components/AnimeList/CollectionButton";
 import { authUserSesion } from "@/app/libs/auth-libs";
+import prisma from "@/app/libs/prisma";
 
 type Params = {
   params: {
@@ -15,12 +16,18 @@ type Params = {
 const Page = async ({ params }: Params) => {
   const data = await getAnimeResponse(`anime/${params.id}`, ``);
   const user = await authUserSesion();
+  const collection = await prisma.collection.findFirst({
+    where: {
+      user_email: user?.email?.trim(), mal_id: data.data.mal_id
+    }
+  })
 
   return (
     <>
       <div className="text-2xl font-bold md:ml-5 ml-4 mb-2 mt-8 flex justify-between">
         {data.data.title}
-        <CollectionButton mal_id={data.data.mal_id} user_email={user?.email || ""} />
+        {!collection && user && <CollectionButton mal_id={data.data.mal_id} user_email={user?.email || ""} />}
+        
       </div>
       <div className="text-lg font-bold m-5 mt-2 flex justify-between">
         {data.data.title_japanese}
