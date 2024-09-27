@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Dropdown from "./Dropdown";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Profile {
     image: string;
@@ -10,6 +10,18 @@ interface Profile {
 
 const ProfilePicture = (profile: Profile) => {
     const [dropdown, setDropdown] = useState(false);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+          if (dropdown && event.target instanceof HTMLElement && !event.target.closest(".dropdown")) {
+            setDropdown(false);
+          }
+        };
+        document.addEventListener("click", handleClickOutside);
+        return () => {
+          document.removeEventListener("click", handleClickOutside);
+        };
+      }, [dropdown]);
 
     const profilepic = profile;
   return (
@@ -24,8 +36,9 @@ const ProfilePicture = (profile: Profile) => {
           onClick={() => setDropdown(!dropdown)}
         />
       </div>
-
+      <div>
       {dropdown && <Dropdown />}
+      </div>
     </>
   );
 };
