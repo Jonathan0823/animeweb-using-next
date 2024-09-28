@@ -22,3 +22,13 @@ model Collection{
 
   @@unique([user_email, mal_id])
 }
+
+model Comment{
+  id              Int @id @default(autoincrement())
+  mal_id          Int
+  user_email      String
+  user_name       String
+  comment         String
+  title           String
+  
+}

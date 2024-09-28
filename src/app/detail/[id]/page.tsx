@@ -6,6 +6,8 @@ import VideoPlayer from "@/app/components/Util/VideoPlayer";
 import CollectionButton from "@/app/components/AnimeList/CollectionButton";
 import { authUserSesion } from "@/app/libs/auth-libs";
 import prisma from "@/app/libs/prisma";
+import CommentInput from "@/app/components/AnimeList/CommentInput";
+import CommentBox from "@/app/components/AnimeList/CommentBox";
 
 type Params = {
   params: {
@@ -18,16 +20,23 @@ const Page = async ({ params }: Params) => {
   const user = await authUserSesion();
   const collection = await prisma.collection.findFirst({
     where: {
-      user_email: user?.email?.trim(), mal_id: data.data.mal_id
-    }
-  })
+      user_email: user?.email?.trim(),
+      mal_id: data.data.mal_id,
+    },
+  });
 
   return (
     <>
       <div className="text-2xl font-bold md:ml-5 ml-4 mb-2 mt-8 flex justify-between">
         {data.data.title}
-        {!collection && user && <CollectionButton mal_id={data.data.mal_id} user_email={user?.email || ""} anime_title={data.data.title} images={data.data.images.jpg.large_image_url} />}
-        
+        {!collection && user && (
+          <CollectionButton
+            mal_id={data.data.mal_id}
+            user_email={user?.email || ""}
+            anime_title={data.data.title}
+            images={data.data.images.jpg.large_image_url}
+          />
+        )}
       </div>
       <div className="text-lg font-bold m-5 mt-2 flex justify-between">
         {data.data.title_japanese}
@@ -66,12 +75,23 @@ const Page = async ({ params }: Params) => {
             </div>
           </div>
           <div className="mt-10">
-          <p className="text-lg font-bold m-5 mt-2">Sypnosis</p>
-          <p className="text-lg m-5 mt-2 flex justify-between text-justify">
-            {data.data.synopsis}
-          </p>
-          <VideoPlayer id={data.data.trailer.youtube_id} />
-            
+            <p className="text-lg font-bold m-5 mt-2">Sypnosis</p>
+            <p className="text-lg m-5 mt-2 flex justify-between text-justify">
+              {data.data.synopsis}
+            </p>
+            <div className="m-5 mt-8">
+              <p className="text-xl font-bold my-2 mb-5">Comments</p>
+              <CommentBox mal_id={data.data.mal_id} />
+            </div>
+            <div className="mt-10 m-5">
+              <CommentInput
+                mal_id={data.data.mal_id}
+                user_email={user?.email || ""}
+                user_name={user?.name || ""}
+                title={data.data.title}
+              />
+            </div>
+            <VideoPlayer id={data.data.trailer.youtube_id} />
           </div>
         </div>
       </div>

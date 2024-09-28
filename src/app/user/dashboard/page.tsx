@@ -29,7 +29,7 @@ const UserDashboard = async () => {
         </div>
         <div className="flex justify-center items-center flex-row md:gap-20  gap-10 flex-wrap mt-10 mb-10">
           <Link className=" p-5 bg-blue-400 text-black  rounded-3xl hover:bg-blue-600 hover:text-white transition-all" href={"/user/collection"} >Collection</Link>
-          <button className=" p-5 bg-blue-400 text-black  rounded-3xl hover:bg-blue-600 hover:text-white transition-all">Commets</button>
+          <button className=" p-5 bg-blue-400 text-black  rounded-3xl hover:bg-blue-600 hover:text-white transition-all">Comments</button>
         </div>
       </div>
     </>

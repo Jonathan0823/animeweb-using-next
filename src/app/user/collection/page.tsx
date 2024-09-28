@@ -16,7 +16,6 @@ const UserCollection = async () => {
       user_email: userInfo?.email?.trim(),
     },
   });
-console.log(collection);
 
   return (
     <>
