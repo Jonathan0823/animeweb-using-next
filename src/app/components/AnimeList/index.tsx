@@ -18,7 +18,7 @@ const AnimeList = ({ api }: { api: { data: Anime[] } }) => {
     <div className="grid md:grid-cols-4 sm:grid-cols-3  grid-cols-2 gap-4 mb-9">
       {api.data?.map((anime: Anime) => (
       <div className="ml-4 mr-6 relative max-w-xs overflow-hidden rounded-2xl shadow-lg group" key={anime.mal_id}>
-        <Link href={`/detail/${anime.mal_id}`} key = {anime.mal_id}>
+        <Link href={`/detail/${anime.mal_id}#top`} key = {anime.mal_id}>
           <Image
             src={anime.images.jpg.large_image_url}
             alt="image"
