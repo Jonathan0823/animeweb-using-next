@@ -4,13 +4,15 @@ import React, { useState } from "react";
 interface Props {
     mal_id: number;
     user_email: string;
+    anime_title: string;
+    images: string;
 }
-const CollectionButton = ({mal_id, user_email}: Props) => {
+const CollectionButton = ({mal_id, user_email, anime_title, images}: Props) => {
     const [isCreated, setIsCreated] = useState(false);
     
     const handleCollection = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
-        const data = {mal_id, user_email};
+        const data = {mal_id, user_email, anime_title, images};
         const res = await fetch("/api/v1/collection", {
             method: "POST",
             body: JSON.stringify(data),

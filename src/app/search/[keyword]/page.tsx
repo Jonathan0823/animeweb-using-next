@@ -11,14 +11,16 @@ type Params = {
 const Page = async ({ params }: Params) => {
   const data = await getAnimeResponse("anime", `q=${params.keyword}`);
   const decodedKeyword = decodeURI(params.keyword);
+  console.log(data);
   return (
     <>
-      <div className="text-2xl font-bold m-5 flex justify-between">
+    {data.data.length === 0 ? <div className="text-2xl font-bold m-5 flex flex-row gap-4  ">No results found for <h1 className="text-blue-500">{decodedKeyword}</h1></div> : <div className="text-2xl font-bold m-5 flex justify-between">
         <div className="flex gap-2">
         <h1>Showing results for</h1>
         <h1 className="text-blue-500">{decodedKeyword}</h1>
         </div>
-      </div>
+      </div>}
+      
       <AnimeList api={data} />
     </>
   );

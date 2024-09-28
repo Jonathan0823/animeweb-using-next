@@ -17,6 +17,8 @@ model Collection{
   id            Int @id @default(autoincrement())
   mal_id        Int
   user_email    String
+  images        String?
+  anime_title   String?
 
   @@unique([user_email, mal_id])
 }

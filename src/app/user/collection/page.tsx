@@ -27,9 +27,9 @@ console.log(collection);
           {collection.map((collect, index) => {
             return (
               <Link key={index} href={`/detail/${collect.mal_id}`} className="border-2 border-blue-400 relative">
-              <Image src="" alt="" width={350} height={350} />
+              <Image src={collect.images ?? ""} alt={collect.anime_title ?? ""} width={350} height={350} />
               <div className="absolute bg-blue-400 w-full bottom-0 py-5">
-                  <h4 className="text-center text-white">{collect.mal_id}</h4>
+                  <h4 className="text-center text-black font-bold">{collect.anime_title}</h4>
               </div>
             </Link>
             )

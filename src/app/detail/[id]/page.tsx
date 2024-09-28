@@ -26,7 +26,7 @@ const Page = async ({ params }: Params) => {
     <>
       <div className="text-2xl font-bold md:ml-5 ml-4 mb-2 mt-8 flex justify-between">
         {data.data.title}
-        {!collection && user && <CollectionButton mal_id={data.data.mal_id} user_email={user?.email || ""} />}
+        {!collection && user && <CollectionButton mal_id={data.data.mal_id} user_email={user?.email || ""} anime_title={data.data.title} images={data.data.images.jpg.large_image_url} />}
         
       </div>
       <div className="text-lg font-bold m-5 mt-2 flex justify-between">
