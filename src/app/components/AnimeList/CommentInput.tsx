@@ -24,6 +24,11 @@ const CommentInput = ({ mal_id, user_email, user_name, title }: Props) => {
 
   const handleCommentSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    if (comment.trim() === "") {
+      return;
+    }
+
     const data = { mal_id, user_email, user_name, comment, title };
     const res = await fetch("/api/v1/comment", {
       method: "POST",
