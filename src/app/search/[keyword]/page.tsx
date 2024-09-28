@@ -9,7 +9,7 @@ type Params = {
 };
 
 const Page = async ({ params }: Params) => {
-  const data = await getAnimeResponse("anime", `q=${params.keyword}`);
+  const data = await getAnimeResponse("anime", `q=${params.keyword}&sfw=true`);
   const decodedKeyword = decodeURI(params.keyword);
   console.log(data);
   return (
