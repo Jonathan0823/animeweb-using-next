@@ -12,6 +12,7 @@ interface Props {
 
 const CommentInput = ({ mal_id, user_email, user_name, title }: Props) => {
   const [isCreated, setIsCreated] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const [comment, setComment] = useState("");
   const router = useRouter()
@@ -36,9 +37,13 @@ const CommentInput = ({ mal_id, user_email, user_name, title }: Props) => {
     });
     const postComment = await res.json();
     if (postComment.status === 200) {
+      setSending(true);
       setIsCreated(true);
       setComment("");
       router.refresh();
+      setTimeout(() => {
+        setSending(false);
+      }, 1000);
       return;
     }
     return;
@@ -52,7 +57,7 @@ const CommentInput = ({ mal_id, user_email, user_name, title }: Props) => {
         className="text-black h-32 w-full p-2 rounded-xl"
       ></textarea>
       <button
-        onClick={handleCommentSubmit}
+        onClick={handleCommentSubmit} disabled={sending}
         className="bg-blue-500 p-3 px-4 rounded-2xl mt-3"
       >
         Comment
