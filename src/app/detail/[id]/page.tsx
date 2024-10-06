@@ -84,12 +84,14 @@ const Page = async ({ params }: Params) => {
               <CommentBox mal_id={data.data.mal_id} />
             </div>
             <div className="mt-10 m-5">
-              <CommentInput
-                mal_id={data.data.mal_id}
-                user_email={user?.email || ""}
-                user_name={user?.name || ""}
-                title={data.data.title}
-              />
+              {user ? (
+                 <CommentInput
+                 mal_id={data.data.mal_id}
+                 user_email={user?.email || ""}
+                 user_name={user?.name || ""}
+                 title={data.data.title}
+               />) : (<p>log in to comment</p>)
+                }
             </div>
             <VideoPlayer id={data.data.trailer.youtube_id} />
           </div>

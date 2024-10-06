@@ -18,6 +18,7 @@ const CommentInput = ({ mal_id, user_email, user_name, title }: Props) => {
   const router = useRouter()
 
 
+
   const handleComment = (event: React.ChangeEvent) => {
     const target = event.target as HTMLInputElement;
     setComment(target.value);
@@ -25,7 +26,7 @@ const CommentInput = ({ mal_id, user_email, user_name, title }: Props) => {
 
   const handleCommentSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
+ 
     if (comment.trim() === "") {
       return;
     }
@@ -50,15 +51,16 @@ const CommentInput = ({ mal_id, user_email, user_name, title }: Props) => {
   };
   return (
     <div className="w-full">
-      {isCreated && <p>Comment created</p>}
+      {isCreated ? <p>Comment created</p> : null}
       <textarea
         onChange={handleComment}
         value={comment}
         className="text-black h-32 w-full p-2 rounded-xl"
       ></textarea>
       <button
-        onClick={handleCommentSubmit} disabled={sending}
+        onClick={handleCommentSubmit}
         className="bg-blue-500 p-3 px-4 rounded-2xl mt-3"
+        disabled={sending}
       >
         Comment
       </button>
